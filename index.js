@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
  */
 
 app.post("/api/createOrder", (req, res) => {
+  console.log("coming inside api/createorder");
   const item_obj = {
     "intent" : "CAPTURE",
     "purchase_units" : [ 
@@ -56,6 +57,7 @@ app.post("/api/createOrder", (req, res) => {
   };
 
   create_order(item_obj).then((response) => {
+    console.log("coming insidecreate_order function");
     console.log("response.id: " + response.id);
     sess.order_id = response.id;
     res.send(response);
