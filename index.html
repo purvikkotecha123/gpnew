@@ -97,7 +97,7 @@ function addGooglePayButton() {
   const button = paymentsClient.createButton({
     onClick: onGooglePaymentButtonClicked,
   });
-  document.getElementById("container").appendChild(button);
+  document.getElementById("button-container").appendChild(button);
 }
 function getGoogleTransactionInfo() {
   return {
