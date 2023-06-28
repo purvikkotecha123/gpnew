@@ -143,10 +143,6 @@ async function processPayment(paymentData) {
     /* Create Order */
     const { id } = await fetch(`api/createOrder`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(order),
     }).then((res) => res.json());
     const { status } = await paypal.Googlepay().confirmOrder({
       orderId: id,
