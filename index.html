@@ -141,7 +141,7 @@ async function processPayment(paymentData) {
       ],
     };
     /* Create Order */
-    const { id } = await fetch(`/orders`, {
+    const { id } = await fetch(`api/createOrder`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
