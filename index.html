@@ -56,7 +56,7 @@ async function getGooglePaymentDataRequest() {
   paymentDataRequest.transactionInfo = getGoogleTransactionInfo();
   paymentDataRequest.merchantInfo = merchantInfo;
   paymentDataRequest.callbackIntents = ["PAYMENT_AUTHORIZATION"];
-  console.log('paymentDataRequest'+JSON.stringify(paymentDataRequest));
+  console.log('paymentDataRequest'+paymentDataRequest);
   return paymentDataRequest;
 }
 function onPaymentAuthorized(paymentData) {
@@ -84,7 +84,7 @@ function getGooglePaymentsClient() {
 async function onGooglePayLoaded() {
   const paymentsClient = getGooglePaymentsClient();
   const { allowedPaymentMethods } = await getGooglePayConfig();
-  console.log('paymentsClient'+JSON.stringify(paymentsClient));
+  console.log('paymentsClient'+paymentsClient);
   paymentsClient
     .isReadyToPay(getGoogleIsReadyToPayRequest(allowedPaymentMethods))
     .then(function (response) {
