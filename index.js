@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
  */
 
 app.post("/api/createOrder", (req, res) => {
+  console.log('In Create Order');
   const item_obj = {
     "intent" : "CAPTURE",
     "purchase_units" : [ 
