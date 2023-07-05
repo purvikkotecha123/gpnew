@@ -40,8 +40,8 @@ async function getGooglePayConfig() {
     const googlePayConfig = await paypal.Googlepay().config();
     allowedPaymentMethods = googlePayConfig.allowedPaymentMethods;
     merchantInfo = googlePayConfig.merchantInfo;
-    console.log('merchantInfo'+merchantInfo);
-    console.log('allowedPaymentMethods'+allowedPaymentMethods);
+    console.log('merchantInfo'+JSON.stringify(merchantInfo));
+    console.log('allowedPaymentMethods'+JSON.stringify(allowedPaymentMethods));
   }
   return {
     allowedPaymentMethods,
@@ -56,7 +56,7 @@ async function getGooglePaymentDataRequest() {
   paymentDataRequest.transactionInfo = getGoogleTransactionInfo();
   paymentDataRequest.merchantInfo = merchantInfo;
   paymentDataRequest.callbackIntents = ["PAYMENT_AUTHORIZATION"];
-  console.log('paymentDataRequest'+paymentDataRequest);
+  console.log('paymentDataRequest'+JSON.stringify(paymentDataRequest));
   return paymentDataRequest;
 }
 function onPaymentAuthorized(paymentData) {
@@ -84,7 +84,7 @@ function getGooglePaymentsClient() {
 async function onGooglePayLoaded() {
   const paymentsClient = getGooglePaymentsClient();
   const { allowedPaymentMethods } = await getGooglePayConfig();
-  console.log('paymentsClient'+paymentDataRequest);
+  console.log('paymentsClient'+JSON.stringify(paymentsClient));
   paymentsClient
     .isReadyToPay(getGoogleIsReadyToPayRequest(allowedPaymentMethods))
     .then(function (response) {
